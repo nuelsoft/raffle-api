@@ -84,8 +84,12 @@ func draw(w http.ResponseWriter, r *http.Request) {
 	email := r.Header.Get("customer_email")
 	var ra *schema.RaffleEntry
 
-	fmt.Println(r.Header)
-
+	for name, values := range r.Header {
+		// Loop over all values for the name.
+		for _, value := range values {
+			fmt.Println(name, value)
+		}
+	}
 	if err := regC.Find(bson.M{"email": email}).One(&ra); err != nil {
 		fmt.Printf("An error occurred finding raffler %s\n", err.Error())
 	} else {
