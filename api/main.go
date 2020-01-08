@@ -84,6 +84,8 @@ func draw(w http.ResponseWriter, r *http.Request) {
 	email := r.Header.Get("customer_email")
 	var ra *schema.RaffleEntry
 
+	fmt.Println(r.Header)
+
 	if err := regC.Find(bson.M{"email": email}).One(&ra); err != nil {
 		fmt.Printf("An error occurred finding raffler %s\n", err.Error())
 	} else {
@@ -148,7 +150,7 @@ main() {
 		port = defaultPort
 	}
 
-	srv := &http.Server{Addr: ":"+port,
+	srv := &http.Server{Addr: ":" + port,
 		ReadTimeout:  20 * time.Second,
 		WriteTimeout: 20 * time.Second}
 
