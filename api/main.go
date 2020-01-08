@@ -41,8 +41,8 @@ func contains(ls []int, val int) bool {
 
 func init() {
 
-	//s, err := mgo.Dial("mongodb://heroku_gxkv4lk6:tor9a3f6s3hnb6ivlbhfpc51ba@ds137008.mlab.com:37008/heroku_gxkv4lk6")
-	s, err := mgo.Dial("mongodb://127.0.0.1")
+	s, err := mgo.Dial("mongodb://heroku_drh8mw8f:8v8d10d1jhlo7crb7404psbtfg@ds161295.mlab.com:61295/heroku_drh8mw8f")
+	//s, err := mgo.Dial("mongodb://127.0.0.1")
 	if err != nil {
 		log.Panicf("Error Occurred while Dialing Database: %s", err)
 	} else {
