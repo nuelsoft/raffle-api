@@ -1,8 +1,9 @@
 package main
 
 import (
-	"encoding/json"
+	"context"
 	"fmt"
+	"github.com/mailgun/mailgun-go/v3"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 	"log"
@@ -19,6 +20,20 @@ import (
 const defaultPort = "9090"
 
 var regC *mgo.Collection
+
+func SendSimpleMessage(msg string, sub string, to string) (string, error) {
+	mg := mailgun.NewMailgun(os.Getenv("MAILGUN_DOMAIN"), os.Getenv("MAILGUN_PUBLIC_KEY"))
+	m := mg.NewMessage(
+		os.Getenv("MAILGUN_SMTP_LOGIN"),
+		sub, msg,
+		to,
+	)
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second*30)
+	defer cancel()
+
+	_, id, err := mg.Send(ctx, m)
+	return id, err
+}
 
 func mkRegC(session *mgo.Session) (collection *mgo.Collection) {
 	return session.DB("heroku_drh8mw8f").C("raffles")
@@ -50,36 +65,6 @@ func init() {
 	} else {
 		regC = mkRegC(s)
 	}
-}
-
-func register(w http.ResponseWriter, r *http.Request) {
-	email := r.Header.Get("Email")
-	raffle := r.Header.Get("Raffle")
-
-	iRaffle, _ := strconv.ParseInt(raffle, 10, 0)
-	var ra *schema.RaffleEntry
-
-	ra = &schema.RaffleEntry{
-		Email:  email,
-		Raffle: iRaffle,
-		Date:   bson.Now().String(),
-	}
-
-	if err := regC.Insert(&ra); err != nil {
-		log.Fatal("An error occurred Inserting to new Raffle DB\n")
-	} else {
-		fmt.Println("Placed Raffle Data. Awaiting Payment...")
-		w.Header().Set("Content-Type", "application/json")
-		res := &schema.Response{
-			Msg: "success: raffle data saved",
-		}
-
-		json, _ := json.Marshal(res)
-		if _, werr := w.Write(json); werr != nil {
-			fmt.Println(werr.Error())
-		}
-	}
-
 }
 
 func draw(w http.ResponseWriter, r *http.Request) {
@@ -130,6 +115,10 @@ func draw(w http.ResponseWriter, r *http.Request) {
 						if _, werr := w.Write([]byte(con)); werr != nil {
 							fmt.Println(werr.Error())
 						}
+
+						if _, serr := SendSimpleMessage("Congratulations\nYou did it!\nYou won ther Raffle!!!", "Congrats", ra.Email); serr != nil {
+							fmt.Println(serr.Error())
+						}
 					}
 
 				} else {
@@ -153,6 +142,10 @@ func draw(w http.ResponseWriter, r *http.Request) {
 						con := fmt.Sprintf("<h1>Sorry <br> %s. That didn't go as planned! Please try again</h1>", ra.Name)
 						if _, werr := w.Write([]byte(con)); werr != nil {
 							fmt.Println(werr.Error())
+						}
+
+						if _, serr := SendSimpleMessage("Sorry\nYou Draw didn't match!\nPlease Try again!", "You can try again", ra.Email); serr != nil {
+							fmt.Println(serr.Error())
 						}
 					}
 				}
@@ -217,7 +210,6 @@ main() {
 		ReadTimeout:  20 * time.Second,
 		WriteTimeout: 20 * time.Second}
 
-	http.HandleFunc("/api/register", register)
 	http.HandleFunc("/api/draw", draw)
 	http.HandleFunc("/winners", winners)
 
