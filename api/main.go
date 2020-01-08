@@ -19,7 +19,7 @@ const defaultPort = "9090"
 var regC *mgo.Collection
 
 func mkRegC(session *mgo.Session) (collection *mgo.Collection) {
-	return session.DB("raffle-it").C("raffles")
+	return session.DB("heroku_gxkv4lk6").C("raffles")
 }
 
 func genRandom() (rands []int) {
