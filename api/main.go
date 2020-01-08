@@ -24,7 +24,7 @@ var regC *mgo.Collection
 func SendSimpleMessage(msg string, sub string, to string) (string, error) {
 	mg := mailgun.NewMailgun(os.Getenv("MAILGUN_DOMAIN"), os.Getenv("MAILGUN_API_KEY"))
 	m := mg.NewMessage(
-		"Tiggs",
+		os.Getenv("MAILGUN_SMTP_LOGIN"),
 		sub, msg,
 		to,
 	)
