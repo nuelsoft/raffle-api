@@ -153,8 +153,8 @@ func draw(w http.ResponseWriter, r *http.Request) {
 						if _, serr := SendSimpleMessage("Sorry\nYou Draw didn't match!\nPlease Try again!", "You can try again", ra.Email); serr != nil {
 							fmt.Println(serr.Error())
 						}
-						if _, herr := w.Write([]byte(static.Sorry)); herr != nil {
-							fmt.Println(herr.Error())
+						if _, rherr := w.Write([]byte(static.Sorry)); rherr != nil {
+							fmt.Println(rherr.Error())
 						}
 
 					}
@@ -176,7 +176,7 @@ func draw(w http.ResponseWriter, r *http.Request) {
 				//if _, werr := w.Write([]byte("Payment ref has already been used")); werr != nil {
 				//	fmt.Println(werr.Error())
 				//}
-				if _, herr := w.Write([]byte(static.Sorry)); herr != nil {
+				if _, herr := w.Write([]byte(static.PaymentRef)); herr != nil {
 					fmt.Println(herr.Error())
 				}
 			}
