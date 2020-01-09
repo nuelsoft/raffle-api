@@ -35,7 +35,8 @@ func Verify(ref string) bool {
 
 		if err == nil {
 			fmt.Println(responseData)
-			if strings.Compare(responseData["data"].(map[string]interface{})["status"].(string), "successful") == 0 {
+
+			if strings.Compare(responseData["status"].(string), "successful") == 0 {
 				amount, _ := responseData["data"].(map[string]interface{})["amount"].(float64)
 				if amount == 1000 {
 					fmt.Println(true)

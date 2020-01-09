@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"github.com/mailgun/mailgun-go/v3"
-	"github.com/thedevsaddam/renderer"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 	"log"
@@ -13,14 +12,13 @@ import (
 	"os"
 	"raffle-api/fxn"
 	"raffle-api/schema"
+	"raffle-api/static"
 	"strconv"
 	"strings"
 	"time"
 )
 
 const defaultPort = "9090"
-
-var rnd *renderer.Render
 
 var regC *mgo.Collection
 
@@ -69,11 +67,6 @@ func init() {
 		regC = mkRegC(s)
 	}
 
-	opts := renderer.Options{
-		ParseGlobPattern: "./static/*.html",
-	}
-
-	rnd = renderer.New(opts)
 }
 
 func draw(w http.ResponseWriter, r *http.Request) {
@@ -125,7 +118,7 @@ func draw(w http.ResponseWriter, r *http.Request) {
 						//	fmt.Println(werr.Error())
 						//}
 
-						if herr := rnd.HTML(w, http.StatusOK, "congrats", nil); herr != nil {
+						if _, herr := w.Write([]byte(static.Congrats)); herr != nil {
 							fmt.Println(herr.Error())
 						}
 
@@ -157,7 +150,7 @@ func draw(w http.ResponseWriter, r *http.Request) {
 						//	fmt.Println(werr.Error())
 						//}
 
-						if herr := rnd.HTML(w, http.StatusOK, "sorry", nil); herr != nil {
+						if _, herr := w.Write([]byte(static.Sorry)); herr != nil {
 							fmt.Println(herr.Error())
 						}
 
@@ -173,7 +166,7 @@ func draw(w http.ResponseWriter, r *http.Request) {
 					//	fmt.Println(werr.Error())
 					//}
 
-					if herr := rnd.HTML(w, http.StatusOK, "already_won", nil); herr != nil {
+					if _, herr := w.Write([]byte(static.AlreadyWon)); herr != nil {
 						fmt.Println(herr.Error())
 					}
 				}
@@ -183,7 +176,7 @@ func draw(w http.ResponseWriter, r *http.Request) {
 				//if _, werr := w.Write([]byte("Payment ref has already been used")); werr != nil {
 				//	fmt.Println(werr.Error())
 				//}
-				if herr := rnd.HTML(w, http.StatusOK, "ref_used", nil); herr != nil {
+				if _, herr := w.Write([]byte(static.PaymentRef)); herr != nil {
 					fmt.Println(herr.Error())
 				}
 			}
@@ -193,7 +186,7 @@ func draw(w http.ResponseWriter, r *http.Request) {
 		//if _, werr := w.Write([]byte("Payment ref seems to be invalid")); werr != nil {
 		//	fmt.Println(werr.Error())
 		//}
-		if herr := rnd.HTML(w, http.StatusOK, "invalid_tx", nil); herr != nil {
+		if _, herr := w.Write([]byte(static.InvalidTx)); herr != nil {
 			fmt.Println(herr.Error())
 		}
 	}
