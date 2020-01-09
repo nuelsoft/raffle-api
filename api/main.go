@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/mailgun/mailgun-go/v3"
+	"github.com/thedevsaddam/renderer"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 	"log"
@@ -18,6 +19,8 @@ import (
 )
 
 const defaultPort = "9090"
+
+var rnd *renderer.Render
 
 var regC *mgo.Collection
 
@@ -65,6 +68,12 @@ func init() {
 	} else {
 		regC = mkRegC(s)
 	}
+
+	opts := renderer.Options{
+		ParseGlobPattern: "../static/*.html",
+	}
+
+	rnd = renderer.New(opts)
 }
 
 func draw(w http.ResponseWriter, r *http.Request) {
@@ -111,9 +120,13 @@ func draw(w http.ResponseWriter, r *http.Request) {
 							fmt.Println(werr.Error())
 						}
 					} else {
-						con := fmt.Sprintf("<h1>Congratulations, <br> %s. You won!, you will recieve an email soon. Also check <a href =\"https://api-raffleit.herokuapp.com/winners\">here</a> to verify.</h1>", ra.Name)
-						if _, werr := w.Write([]byte(con)); werr != nil {
-							fmt.Println(werr.Error())
+						//con := fmt.Sprintf("<h1>Congratulations, <br> %s. You won!, you will recieve an email soon. Also check <a href =\"https://api-raffleit.herokuapp.com/winners\">here</a> to verify.</h1>", ra.Name)
+						//if _, werr := w.Write([]byte(con)); werr != nil {
+						//	fmt.Println(werr.Error())
+						//}
+
+						if herr := rnd.HTML(w, http.StatusOK, "congrats", nil); herr != nil {
+							fmt.Println(herr.Error())
 						}
 
 						if _, serr := SendSimpleMessage("Congratulations\nYou did it!\nYou won ther Raffle!!!", "Congrats", ra.Email); serr != nil {
@@ -139,9 +152,13 @@ func draw(w http.ResponseWriter, r *http.Request) {
 							fmt.Println(werr.Error())
 						}
 					} else {
-						con := fmt.Sprintf("<h1>Sorry <br> %s. That didn't go as planned! Please try again</h1>", ra.Name)
-						if _, werr := w.Write([]byte(con)); werr != nil {
-							fmt.Println(werr.Error())
+						//con := fmt.Sprintf("<h1>Sorry <br> %s. That didn't go as planned! Please try again</h1>", ra.Name)
+						//if _, werr := w.Write([]byte(con)); werr != nil {
+						//	fmt.Println(werr.Error())
+						//}
+
+						if herr := rnd.HTML(w, http.StatusOK, "sorry", nil); herr != nil {
+							fmt.Println(herr.Error())
 						}
 
 						if _, serr := SendSimpleMessage("Sorry\nYou Draw didn't match!\nPlease Try again!", "You can try again", ra.Email); serr != nil {
@@ -151,23 +168,33 @@ func draw(w http.ResponseWriter, r *http.Request) {
 				}
 			} else {
 				if ra != nil {
-					con := fmt.Sprintf("<h1>You already won!, <br> %sPlease check <a href =\"https://api-raffleit.herokuapp.com/winners\">here</a> to verify.</h1>", ra.Email)
-					if _, werr := w.Write([]byte(con)); werr != nil {
-						fmt.Println(werr.Error())
+					//con := fmt.Sprintf("<h1>You already won!, <br> %sPlease check <a href =\"https://api-raffleit.herokuapp.com/winners\">here</a> to verify.</h1>", ra.Email)
+					//if _, werr := w.Write([]byte(con)); werr != nil {
+					//	fmt.Println(werr.Error())
+					//}
+
+					if herr := rnd.HTML(w, http.StatusOK, "already_won", nil); herr != nil {
+						fmt.Println(herr.Error())
 					}
 				}
 			}
 		} else {
 			if ra != nil {
-				if _, werr := w.Write([]byte("Payment ref has already been used")); werr != nil {
-					fmt.Println(werr.Error())
+				//if _, werr := w.Write([]byte("Payment ref has already been used")); werr != nil {
+				//	fmt.Println(werr.Error())
+				//}
+				if herr := rnd.HTML(w, http.StatusOK, "ref_used", nil); herr != nil {
+					fmt.Println(herr.Error())
 				}
 			}
 
 		}
 	} else {
-		if _, werr := w.Write([]byte("Payment ref seems to be invalid")); werr != nil {
-			fmt.Println(werr.Error())
+		//if _, werr := w.Write([]byte("Payment ref seems to be invalid")); werr != nil {
+		//	fmt.Println(werr.Error())
+		//}
+		if herr := rnd.HTML(w, http.StatusOK, "invalid_tx", nil); herr != nil {
+			fmt.Println(herr.Error())
 		}
 	}
 
