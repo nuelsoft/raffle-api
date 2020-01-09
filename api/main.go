@@ -91,7 +91,6 @@ func draw(w http.ResponseWriter, r *http.Request) {
 
 			//fmt.Print(r)
 			if err := regC.Find(bson.M{"email": rs[2], "winner": true}).One(&ra); err != nil && err.Error() == "not found" {
-				w.Header().Set("Content-Type", "application/json")
 
 				raf, _ := strconv.ParseInt(rs[3], 10, 0)
 
