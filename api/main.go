@@ -211,7 +211,7 @@ func winners(w http.ResponseWriter, r *http.Request) {
 			<th scope="row">%d</th>
 			<td>%s</td>
 			<td>%s</td>
-			<td>@%s</td>
+			<td>%s</td>
 			</tr>`, i+1, ras[i].Name, ras[i].Phone, ras[i].Email)
 		}
 
