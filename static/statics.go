@@ -176,7 +176,7 @@ const (
 <body>
 <div class="container pt-3">
 <div class="float-right">
-        <a  href="https:/raffleit.netlify.com">Go Back to Raffle</a>
+        <a  href="https://raffleit.netlify.com">Go Back to Raffle</a>
     </div>
     <h1>Cheers to our <span class="text-info font-weight-bolder">Winners</span></h1>
     <div class="card mt-3">
@@ -200,5 +200,3 @@ const (
 </body>
 </html>`
 )
-
-
