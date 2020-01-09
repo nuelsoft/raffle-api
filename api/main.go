@@ -81,11 +81,11 @@ func draw(w http.ResponseWriter, r *http.Request) {
 	//}
 
 	txRef := r.URL.Query().Get("txref")
-	flwRef := r.URL.Query().Get("flwref")
+	//flwRef := r.URL.Query().Get("flwref")
 
 	fmt.Println(txRef)
 
-	if fxn.Verify(flwRef) {
+	if fxn.Verify(txRef) {
 		if err := regC.Find(bson.M{"payment_ref": txRef}).One(&ra); err != nil && err.Error() == "not found" {
 			rs := strings.Split(txRef, ":")
 
