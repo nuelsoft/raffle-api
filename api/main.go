@@ -176,7 +176,7 @@ func draw(w http.ResponseWriter, r *http.Request) {
 				//if _, werr := w.Write([]byte("Payment ref has already been used")); werr != nil {
 				//	fmt.Println(werr.Error())
 				//}
-				if _, herr := w.Write([]byte(static.PaymentRef)); herr != nil {
+				if _, herr := w.Write([]byte(static.Sorry)); herr != nil {
 					fmt.Println(herr.Error())
 				}
 			}
