@@ -193,6 +193,9 @@ func draw(w http.ResponseWriter, r *http.Request) {
 }
 
 func winners(w http.ResponseWriter, r *http.Request) {
+
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+
 	var ras []*schema.RaffleEntry
 	if err := regC.Find(bson.M{"winner": true}).All(&ras); err != nil && err.Error() != "not found" {
 		fmt.Println(err.Error())
@@ -202,17 +205,19 @@ func winners(w http.ResponseWriter, r *http.Request) {
 		//json, _ := json.Marshal(res)
 
 		str := ""
-		if len(ras) == 0 {
-			str = "<h2>No Raffle Winners yet</h2>"
-		} else {
-			str = "<h2>Raffle Winners are:</h2>"
 
-		}
 		for i := 0; i < len(ras); i++ {
-			str += fmt.Sprintf("<h3>%d. %s ::: %s ::: %s</h3>\n", i+1, ras[i].Name, ras[i].Email, ras[i].Phone)
+			str += fmt.Sprintf(`<tr>
+			<th scope="row">%d</th>
+			<td>%s</td>
+			<td>%s</td>
+			<td>@%s</td>
+			</tr>`, i+1, ras[i].Name, ras[i].Phone, ras[i].Email)
 		}
 
-		if _, werr := w.Write([]byte(str)); werr != nil {
+		f := fmt.Sprintf(static.Winners, str)
+
+		if _, werr := w.Write([]byte(f)); werr != nil {
 			fmt.Println(werr.Error())
 		}
 	}
