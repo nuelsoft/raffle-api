@@ -154,9 +154,9 @@ func draw(w http.ResponseWriter, r *http.Request) {
 							fmt.Println(herr.Error())
 						}
 
-						if _, serr := SendSimpleMessage("Sorry\nYou Draw didn't match!\nPlease Try again!", "You can try again", ra.Email); serr != nil {
-							fmt.Println(serr.Error())
-						}
+						//if _, serr := SendSimpleMessage("Sorry\nYou Draw didn't match!\nPlease Try again!", "You can try again", ra.Email); serr != nil {
+						//	fmt.Println(serr.Error())
+						//}
 					}
 				}
 			} else {
