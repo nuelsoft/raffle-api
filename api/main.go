@@ -70,7 +70,7 @@ func init() {
 	}
 
 	opts := renderer.Options{
-		ParseGlobPattern: "../static/*.html",
+		ParseGlobPattern: "./static/*.html",
 	}
 
 	rnd = renderer.New(opts)
