@@ -15,7 +15,7 @@ func Verify(ref string) bool {
 	data := make(map[string]string)
 	data["txref"] = ref
 	// merchant secret key
-	data["SECKEY"] = "FLWSECK_TEST-01783ff073eee2afa44b3387283324ae-X"
+	data["SECKEY"] = "FLWSECK-48ef8ec3db4e940026025892f5c66cb9-X"
 
 	//convert data map to json byte[]
 	jsonData, _ := json.Marshal(data)
