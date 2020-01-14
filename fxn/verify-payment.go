@@ -10,7 +10,7 @@ import (
 )
 
 func Verify(ref string) bool {
-	url := "https://ravesandboxapi.flutterwave.com/flwv3-pug/getpaidx/api/v2/verify" //Please make sure to change to that of production server when you are ready to go live.
+	url := "https://api.ravepay.co/flwv3-pug/getpaidx/api/v2/verify" //Please make sure to change to that of production server when you are ready to go live.
 
 	data := make(map[string]string)
 	data["txref"] = ref
