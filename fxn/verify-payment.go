@@ -38,7 +38,7 @@ func Verify(ref string) bool {
 
 			if strings.Compare(responseData["status"].(string), "success") == 0 {
 				amount, _ := responseData["data"].(map[string]interface{})["amount"].(float64)
-				if amount == 1000 {
+				if amount == 500 {
 					fmt.Println(true)
 					return true
 				}
