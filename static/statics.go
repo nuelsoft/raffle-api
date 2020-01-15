@@ -202,7 +202,7 @@ const (
         <a  href="https://badcommentsmoviepromo.com">Go Back to Raffle</a>
     </div>
     <h1>Cheers to our <span class="text-info font-weight-bolder">Winners</span></h1>
-    <div class="card mt-3">
+    <div class=" mt-3">
         <table class="table table-striped">
             <thead>
             <tr>
