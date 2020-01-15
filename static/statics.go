@@ -19,8 +19,9 @@ const (
         WINNER
     </div>
     <div class="card-body container-fluid">
-        <h5 class="card-title">You already won</h5>
-        <p class="card-text">Please check your email</p>
+        <h5 class="card-title">You got the magic!</h5>
+		<p class="card-text">You won again. Keep winning and don't forgot to share the link 
+		https://badcommentsmoviepromo.com with your friends and family</p>
         <a href="https://badcommentsmoviepromo.com" class="btn btn-primary">See Other winners</a>
     </div>
 </div>
@@ -45,8 +46,21 @@ const (
         Congratulations
     </div>
     <div class="card-body container-fluid">
-        <h5 class="card-title">Hurray!</h5>
-        <p class="card-text">You won. Your draw was magical. You'll receive an email from us soon.</p>
+        <h5 class="card-title">You WON</h5>
+		<p class="card-text">
+		Thank you for participating in the "BAD COMMENTS THE MOVIE" Promo. 
+		Congratulations! You have been selected as one of the random winners for today's draw. 
+		Your win grants you free access to attend  "BAD COMMENTS THE MOVIE PREMIERE" this Easter 
+		and a photoshoot with your favourite "BAD COMMENTS MOVIE STARS" like Jim Iyke, Ini Edo, Timaya, 
+		Daddy Freeze etc. Wait😊 it has not finished yet🕺🏾. You will also receive free roundtrip transportation 
+		from your location to the "BAD COMMENTS THE MOVIE" Premiere venue and a V.I.P red carpet treatment. 
+		Oh wait! This is not the end, You can continue to play on for as many times as you wish to be among
+		the 10 lucky winners to win grand prizes of 1k USD each and all expense paid trip to Zanzibar with
+		Jim Iyke and Ini Edo for 3days starting from Easter Sunday. It only gets better with 
+		<b>"BAD COMMENTS THE MOVIE"</b>. P.S send the BAD COMMENTS MOVIE PROMO LINK 
+		<a href="https://badcommentsmoviepromo.com">https://badcommentsmoviepromo.com</a> to your 
+		family and friends for them to win too. Yes oo! All we do is WIN! WIN! WIN!💪🏾🕺🏾
+		</p>
         <a href="https://badcommentsmoviepromo.com" class="btn btn-primary">See Other winners</a>
     </div>
 </div>
@@ -149,11 +163,20 @@ const (
 <body>
 <div class="card">
     <div class="card-header font-weight-bolder">
-        SORRY
+        Try again
     </div>
     <div class="card-body container-fluid">
-        <h5 class="card-title">Oh no!</h5>
-        <p class="card-text">That didn't go as expected. You can always try again!</p>
+        <h5 class="card-title">Oops!</h5>
+		<p class="card-text">Oops! Try again to be amongst the winners for today's draw.
+		 Your win grants you free access to attend  "BAD COMMENTS THE MOVIE PREMIERE" this Easter and a 
+		 photoshoot with your favourite "BAD COMMENTS MOVIE STARS" like Jim Iyke, Ini Edo, Timaya, Daddy Freeze etc. 
+		 Wait😊 it has not finished yet🕺🏾. You will also receive free roundtrip transportation from your location 
+		 to the "BAD COMMENTS THE MOVIE" Premiere venue and a V.I.P red carpet treatment. Oh wait! This is not 
+		 the end, You can continue to play on for as many times as you wish to be among the 10 lucky winners to 
+		 win grand prizes of 1k USD each and all expense paid trip to Zanzibar with Jim Iyke and Ini Edo for 3 days 
+		 starting from Easter Sunday. It only gets better with "BAD COMMENTS THE MOVIE". P.S. Send the BAD COMMENTS MOVIE
+		  PROMO LINK https://badcommentsmoviepromo.com/ to your family and friends for them to win too. 
+		Yes oo! Play again & don't give up bcos All we do is WIN! WIN! WIN! No matter what.💪🏾💪🏾</p>
         <a href="https://badcommentsmoviepromo.com" class="btn btn-primary">Try again</a>
         <a href="https://api-badcommentsmoviepromo.herokuapp.com/winners" class="btn btn-secondary ">See winners</a>
 
@@ -183,7 +206,6 @@ const (
         <table class="table table-striped">
             <thead>
             <tr>
-                <th scope="col">#</th>
                 <th scope="col">Name</th>
                 <th scope="col">Phone</th>
                 <th scope="col">Email</th>

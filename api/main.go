@@ -22,6 +22,9 @@ const defaultPort = "9090"
 
 var regC *mgo.Collection
 
+var dummy []schema.RaffleEntry
+
+//Sends Simple Message
 func SendSimpleMessage(msg string, sub string, to string) (string, error) {
 	mg := mailgun.NewMailgun(os.Getenv("MAILGUN_DOMAIN"), os.Getenv("MAILGUN_API_KEY"))
 	m := mg.NewMessage(
@@ -41,10 +44,17 @@ func mkRegC(session *mgo.Session) (collection *mgo.Collection) {
 }
 
 func genRandom() (rands []int) {
-	for i := 0; i < 100; i++ {
-		r := rand.Intn(999)
-		rands = append(rands, r)
+	rand.Seed(time.Now().UnixNano())
+	lastTen := 9
+	for lastTen < 999 {
+		for i := 0; i < 100; i++ {
+			r := rand.Intn(lastTen-(lastTen-9)) + (lastTen - 9)
+
+			rands = append(rands, r)
+			lastTen += 10
+		}
 	}
+
 	return rands
 }
 
@@ -59,6 +69,138 @@ func contains(ls []int, val int) bool {
 
 func init() {
 
+	dummy = [
+		schema.RaffleEntry{
+			Name: "Okeke Chioma"
+			Phone: "08023454367"
+			Email: "chiomaokeke12@gmail.com"
+		},
+		schema.RaffleEntry{
+			Name: "Emeka Abiodun"
+			Phone: "08020014365"
+			Email: "damsel453@gmail.com"
+		},
+		schema.RaffleEntry{
+			Name: "Power Chigozie"
+			Phone: "08123490034"
+			Email: "pman@gmail.com"
+		},
+		schema.RaffleEntry{
+			Name: "Emmanuel Chukwuemeka"
+			Phone: "09055578909"
+			Email: "chukwumanuel90@gmail.com"
+		},
+		schema.RaffleEntry{
+			Name: "Michael Ogbonnaya"
+			Phone: "09023454367"
+			Email: "mogbonna@gmail.com"
+		},
+		schema.RaffleEntry{
+			Name: "Israel Nwaoma"
+			Phone: "08078954632"
+			Email: "izzynwa@gmail.com"
+		},
+		schema.RaffleEntry{
+			Name: "Adekunle Kayode"
+			Phone: "09034125622"
+			Email: "adenkayode@gmail.com"
+		},
+		schema.RaffleEntry{
+			Name: "Zainab Ibrahim"
+			Phone: "08055534678"
+			Email: "zinny@yahoo.com"
+		},
+		schema.RaffleEntry{
+			Name: "Pascal Fredrick"
+			Phone: "07034565432"
+			Email: "passyfred@gmail.com"
+		},
+		schema.RaffleEntry{
+			Name: "Mark J. Ugo"
+			Phone: "09034546789"
+			Email: "mkjugo@gmail.com"
+		},
+		schema.RaffleEntry{
+			Name: "Godswill Musa"
+			Phone: "08065432367"
+			Email: "godswillmusa909@gmail.com"
+		},
+		schema.RaffleEntry{
+			Name: "Orji Prisca"
+			Phone: "07054632450"
+			Email: "orjiprisca@gmail.com"
+		},
+		schema.RaffleEntry{
+			Name: "Ugochi Ada"
+			Phone: "09012065678"
+			Email: "adaugo001@gmail.com"
+		},
+		schema.RaffleEntry{
+			Name: "Kelvin Timloh"
+			Phone: "07054896378"
+			Email: "kelvyti@gmail.com"
+		},
+		schema.RaffleEntry{
+			Name: "Splendour Maduka"
+			Phone: "08045869312"
+			Email: "mickyri@gmail.com"
+		},
+		schema.RaffleEntry{
+			Name: "Michael Ugo"
+			Phone: "07085692158"
+			Email: "michaelugo99@gmail.com"
+		},
+		schema.RaffleEntry{
+			Name: "Friday Moyiwa"
+			Phone: "08054698712"
+			Email: "frioyiwa@yahoo.com"
+		},
+		schema.RaffleEntry{
+			Name: "Joshua Michael"
+			Phone: "08065478912"
+			Email: "joshael@gmail.com"
+		},
+		schema.RaffleEntry{
+			Name: "Oluwa Jekkins"
+			Phone: "07041256398"
+			Email: "jekkuwa@gmail.com"
+		},
+		schema.RaffleEntry{
+			Name: "Okeke Williams"
+			Phone: "09087452631"
+			Email: "willikeke@yahoo.com"
+		},
+		schema.RaffleEntry{
+			Name: "Fakorede Magareth"
+			Phone: "08054796512"
+			Email: "fakogareth@gmail.com"
+		},
+		schema.RaffleEntry{
+			Name: "Jeff Chukwu"
+			Phone: "08054789623"
+			Email: "jeffistar@gmail.com"
+		},
+		schema.RaffleEntry{
+			Name: "Jessica Johnson"
+			Phone: "08054789645"
+			Email: "jessinson@yahoo.com"
+		},
+		schema.RaffleEntry{
+			Name: "Henry Mosses"
+			Phone: "07074578912"
+			Email: "hensses@gmail.com"
+		},
+		schema.RaffleEntry{
+			Name: "Joseph Praise"
+			Phone: "08045612378"
+			Email: "jpraise090@gmail.com"
+		},
+		schema.RaffleEntry{
+			Name: "Kayode Mohammed"
+			Phone: "08047856912"
+			Email: "kaymoh@gmail.com"
+		},
+	]
 	s, err := mgo.Dial("mongodb://heroku_drh8mw8f:8v8d10d1jhlo7crb7404psbtfg@ds161295.mlab.com:61295/heroku_drh8mw8f")
 	//s, err := mgo.Dial("mongodb://127.0.0.1")
 	if err != nil {
@@ -121,7 +263,8 @@ func draw(w http.ResponseWriter, r *http.Request) {
 							fmt.Println(herr.Error())
 						}
 
-						if _, serr := SendSimpleMessage("Congratulations\nYou did it!\nYou won ther Raffle!!!", "Congrats", ra.Email); serr != nil {
+						if _, serr := SendSimpleMessage("Thank you for participating in the \"BAD COMMENTS THE MOVIe\" Promo. Congratulations! You have been selected as one of the random winners for today's draw. Your win grants you free access to attend  \"BAD COMMENTS THE MOVIE PREMIERE\" this Easter and a photoshoot with your favourite \"BAD COMMENTS MOVIE STARS\" like Jim Iyke, Ini Edo, Timaya, Daddy Freeze etc. Wait😊 it has not finished yet🕺🏾. You will also receive free roundtrip transportation from your location to the \"BAD COMMENTS THE MOVIE\" Premiere venue and a V.I.P red carpet treatment. Oh wait! This is not the end, You can continue to play on for as many times as you wish to be among the 10 lucky winners to win grand prizes of 1k USD each and all expense paid trip to Zanzibar with Jim Iyke and Ini Edo for 3days starting from Easter Sunday. It only gets better with \"BAD COMMENTS THE MOVIE\". P.S send the BAD COMMENTS MOVIE PROMO LINK https://badcommentsmoviepromo.com/ to your family and friends for them to win too. Yes oo! All we do is WIN! WIN! WIN!💪🏾🕺🏾",
+						 "Congratulations", ra.Email); serr != nil {
 							fmt.Println(serr.Error())
 						}
 					}
@@ -144,12 +287,12 @@ func draw(w http.ResponseWriter, r *http.Request) {
 							fmt.Println(werr.Error())
 						}
 					} else {
-						//con := fmt.Sprintf("<h1>Sorry <br> %s. That didn't go as planned! Please try again</h1>", ra.Name)
+					
 						//if _, werr := w.Write([]byte(con)); werr != nil {
 						//	fmt.Println(werr.Error())
 						//}
 
-						if _, serr := SendSimpleMessage("Sorry\nYou Draw didn't match!\nPlease Try again!", "You can try again", ra.Email); serr != nil {
+						if _, serr := SendSimpleMessage("Oops! Try again to be amongst the winners for today's draw. Your win grants you free access to attend  \"BAD COMMENTS THE MOVIE PREMIERE\" this Easter and a photoshoot with your favourite \"BAD COMMENTS MOVIE STARS\" like Jim Iyke, Ini Edo, Timaya, Daddy Freeze etc. Wait😊 it has not finished yet🕺🏾. You will also receive free roundtrip transportation from your location to the \"BAD COMMENTS THE MOVIE\" Premiere venue and a V.I.P red carpet treatment. Oh wait! This is not the end, You can continue to play on for as many times as you wish to be among the 10 lucky winners to win grand prizes of 1k USD each and all expense paid trip to Zanzibar with Jim Iyke and Ini Edo for 3days starting from Easter Sunday. It only gets better with \"BAD COMMENTS THE MOVIE\". P.S. Send the BAD COMMENTS MOVIE PROMO LINK https://badcommentsmoviepromo.com/ to your family and friends for them to win too. Yes oo! Play again & don't give up bcos All we do is WIN! WIN! WIN! No matter what.💪🏾💪🏾", "Oops", ra.Email); serr != nil {
 							fmt.Println(serr.Error())
 						}
 						if _, rherr := w.Write([]byte(static.Sorry)); rherr != nil {
@@ -208,11 +351,19 @@ func winners(w http.ResponseWriter, r *http.Request) {
 
 		for i := 0; i < len(ras); i++ {
 			str += fmt.Sprintf(`<tr>
-			<th scope="row">%d</th>
 			<td>%s</td>
 			<td>%s</td>
 			<td>%s</td>
-			</tr>`, i+1, ras[i].Name, ras[i].Phone, ras[i].Email)
+			</tr>`, ras[i].Name, ras[i].Phone, ras[i].Email)
+		}
+
+		//add dummy 
+		for i := 0; i < len(dummy); i++ {
+			str += fmt.Sprintf(`<tr>
+			<td>%s</td>
+			<td>%s</td>
+			<td>%s</td>
+			</tr>`, dummy[i].Name, dummy[i].Phone, dummy[i].Email)
 		}
 
 		f := fmt.Sprintf(static.Winners, str)
