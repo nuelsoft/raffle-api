@@ -71,134 +71,134 @@ func init() {
 
 	dummy = [
 		schema.RaffleEntry{
-			Name: "Okeke Chioma"
-			Phone: "08023454367"
-			Email: "chiomaokeke12@gmail.com"
+			Name: "Okeke Chioma",
+			Phone: "08023454367",
+			Email: "chiomaokeke12@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Emeka Abiodun"
-			Phone: "08020014365"
-			Email: "damsel453@gmail.com"
+			Name: "Emeka Abiodun",
+			Phone: "08020014365",
+			Email: "damsel453@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Power Chigozie"
-			Phone: "08123490034"
-			Email: "pman@gmail.com"
+			Name: "Power Chigozie",
+			Phone: "08123490034",
+			Email: "pman@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Emmanuel Chukwuemeka"
-			Phone: "09055578909"
-			Email: "chukwumanuel90@gmail.com"
+			Name: "Emmanuel Chukwuemeka",
+			Phone: "09055578909",
+			Email: "chukwumanuel90@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Michael Ogbonnaya"
-			Phone: "09023454367"
-			Email: "mogbonna@gmail.com"
+			Name: "Michael Ogbonnaya",
+			Phone: "09023454367",
+			Email: "mogbonna@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Israel Nwaoma"
-			Phone: "08078954632"
-			Email: "izzynwa@gmail.com"
+			Name: "Israel Nwaoma",
+			Phone: "08078954632",
+			Email: "izzynwa@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Adekunle Kayode"
-			Phone: "09034125622"
-			Email: "adenkayode@gmail.com"
+			Name: "Adekunle Kayode",
+			Phone: "09034125622",
+			Email: "adenkayode@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Zainab Ibrahim"
+			Name: "Zainab Ibrahim",
 			Phone: "08055534678"
-			Email: "zinny@yahoo.com"
+			Email: "zinny@yahoo.com",
 		},
 		schema.RaffleEntry{
-			Name: "Pascal Fredrick"
-			Phone: "07034565432"
-			Email: "passyfred@gmail.com"
+			Name: "Pascal Fredrick",
+			Phone: "07034565432",
+			Email: "passyfred@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Mark J. Ugo"
-			Phone: "09034546789"
-			Email: "mkjugo@gmail.com"
+			Name: "Mark J. Ugo",
+			Phone: "09034546789",
+			Email: "mkjugo@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Godswill Musa"
-			Phone: "08065432367"
-			Email: "godswillmusa909@gmail.com"
+			Name: "Godswill Musa",
+			Phone: "08065432367",
+			Email: "godswillmusa909@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Orji Prisca"
-			Phone: "07054632450"
-			Email: "orjiprisca@gmail.com"
+			Name: "Orji Prisca",
+			Phone: "07054632450",
+			Email: "orjiprisca@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Ugochi Ada"
-			Phone: "09012065678"
-			Email: "adaugo001@gmail.com"
+			Name: "Ugochi Ada",
+			Phone: "09012065678",
+			Email: "adaugo001@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Kelvin Timloh"
-			Phone: "07054896378"
-			Email: "kelvyti@gmail.com"
+			Name: "Kelvin Timloh",
+			Phone: "07054896378",
+			Email: "kelvyti@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Splendour Maduka"
-			Phone: "08045869312"
-			Email: "mickyri@gmail.com"
+			Name: "Splendour Maduka",
+			Phone: "08045869312",
+			Email: "mickyri@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Michael Ugo"
-			Phone: "07085692158"
-			Email: "michaelugo99@gmail.com"
+			Name: "Michael Ugo",
+			Phone: "07085692158",
+			Email: "michaelugo99@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Friday Moyiwa"
-			Phone: "08054698712"
-			Email: "frioyiwa@yahoo.com"
+			Name: "Friday Moyiwa",
+			Phone: "08054698712",
+			Email: "frioyiwa@yahoo.com",
 		},
 		schema.RaffleEntry{
-			Name: "Joshua Michael"
-			Phone: "08065478912"
-			Email: "joshael@gmail.com"
+			Name: "Joshua Michael",
+			Phone: "08065478912",
+			Email: "joshael@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Oluwa Jekkins"
-			Phone: "07041256398"
-			Email: "jekkuwa@gmail.com"
+			Name: "Oluwa Jekkins",
+			Phone: "07041256398",
+			Email: "jekkuwa@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Okeke Williams"
-			Phone: "09087452631"
-			Email: "willikeke@yahoo.com"
+			Name: "Okeke Williams",
+			Phone: "09087452631",
+			Email: "willikeke@yahoo.com",
 		},
 		schema.RaffleEntry{
-			Name: "Fakorede Magareth"
-			Phone: "08054796512"
-			Email: "fakogareth@gmail.com"
+			Name: "Fakorede Magareth",
+			Phone: "08054796512",
+			Email: "fakogareth@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Jeff Chukwu"
-			Phone: "08054789623"
-			Email: "jeffistar@gmail.com"
+			Name: "Jeff Chukwu",
+			Phone: "08054789623",
+			Email: "jeffistar@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Jessica Johnson"
-			Phone: "08054789645"
-			Email: "jessinson@yahoo.com"
+			Name: "Jessica Johnson",
+			Phone: "08054789645",
+			Email: "jessinson@yahoo.com",
 		},
 		schema.RaffleEntry{
-			Name: "Henry Mosses"
-			Phone: "07074578912"
-			Email: "hensses@gmail.com"
+			Name: "Henry Mosses",
+			Phone: "07074578912",
+			Email: "hensses@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Joseph Praise"
-			Phone: "08045612378"
-			Email: "jpraise090@gmail.com"
+			Name: "Joseph Praise",
+			Phone: "08045612378",
+			Email: "jpraise090@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Kayode Mohammed"
-			Phone: "08047856912"
-			Email: "kaymoh@gmail.com"
+			Name: "Kayode Mohammed",
+			Phone: "08047856912",
+			Email: "kaymoh@gmail.com",
 		},
 	]
 	s, err := mgo.Dial("mongodb://heroku_drh8mw8f:8v8d10d1jhlo7crb7404psbtfg@ds161295.mlab.com:61295/heroku_drh8mw8f")
