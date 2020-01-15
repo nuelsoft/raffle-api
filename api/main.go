@@ -24,6 +24,7 @@ var regC *mgo.Collection
 
 var dummy []schema.RaffleEntry
 
+
 //Sends Simple Message
 func SendSimpleMessage(msg string, sub string, to string) (string, error) {
 	mg := mailgun.NewMailgun(os.Getenv("MAILGUN_DOMAIN"), os.Getenv("MAILGUN_API_KEY"))
@@ -68,139 +69,139 @@ func contains(ls []int, val int) bool {
 }
 
 func init() {
-
-	dummy = [
+	dummy = []schema.RaffleEntry {
 		schema.RaffleEntry{
-			Name: "Okeke Chioma",
+			Name:  "Okeke Chioma",
 			Phone: "08023454367",
 			Email: "chiomaokeke12@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Emeka Abiodun",
+			Name:  "Emeka Abiodun",
 			Phone: "08020014365",
 			Email: "damsel453@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Power Chigozie",
+			Name:  "Power Chigozie",
 			Phone: "08123490034",
 			Email: "pman@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Emmanuel Chukwuemeka",
+			Name:  "Emmanuel Chukwuemeka",
 			Phone: "09055578909",
 			Email: "chukwumanuel90@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Michael Ogbonnaya",
+			Name:  "Michael Ogbonnaya",
 			Phone: "09023454367",
 			Email: "mogbonna@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Israel Nwaoma",
+			Name:  "Israel Nwaoma",
 			Phone: "08078954632",
 			Email: "izzynwa@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Adekunle Kayode",
+			Name:  "Adekunle Kayode",
 			Phone: "09034125622",
 			Email: "adenkayode@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Zainab Ibrahim",
+			Name:  "Zainab Ibrahim",
 			Phone: "08055534678",
 			Email: "zinny@yahoo.com",
 		},
 		schema.RaffleEntry{
-			Name: "Pascal Fredrick",
+			Name:  "Pascal Fredrick",
 			Phone: "07034565432",
 			Email: "passyfred@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Mark J. Ugo",
+			Name:  "Mark J. Ugo",
 			Phone: "09034546789",
 			Email: "mkjugo@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Godswill Musa",
+			Name:  "Godswill Musa",
 			Phone: "08065432367",
 			Email: "godswillmusa909@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Orji Prisca",
+			Name:  "Orji Prisca",
 			Phone: "07054632450",
 			Email: "orjiprisca@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Ugochi Ada",
+			Name:  "Ugochi Ada",
 			Phone: "09012065678",
 			Email: "adaugo001@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Kelvin Timloh",
+			Name:  "Kelvin Timloh",
 			Phone: "07054896378",
 			Email: "kelvyti@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Splendour Maduka",
+			Name:  "Splendour Maduka",
 			Phone: "08045869312",
 			Email: "mickyri@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Michael Ugo",
+			Name:  "Michael Ugo",
 			Phone: "07085692158",
 			Email: "michaelugo99@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Friday Moyiwa",
+			Name:  "Friday Moyiwa",
 			Phone: "08054698712",
 			Email: "frioyiwa@yahoo.com",
 		},
 		schema.RaffleEntry{
-			Name: "Joshua Michael",
+			Name:  "Joshua Michael",
 			Phone: "08065478912",
 			Email: "joshael@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Oluwa Jekkins",
+			Name:  "Oluwa Jekkins",
 			Phone: "07041256398",
 			Email: "jekkuwa@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Okeke Williams",
+			Name:  "Okeke Williams",
 			Phone: "09087452631",
 			Email: "willikeke@yahoo.com",
 		},
 		schema.RaffleEntry{
-			Name: "Fakorede Magareth",
+			Name:  "Fakorede Magareth",
 			Phone: "08054796512",
 			Email: "fakogareth@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Jeff Chukwu",
+			Name:  "Jeff Chukwu",
 			Phone: "08054789623",
 			Email: "jeffistar@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Jessica Johnson",
+			Name:  "Jessica Johnson",
 			Phone: "08054789645",
 			Email: "jessinson@yahoo.com",
 		},
 		schema.RaffleEntry{
-			Name: "Henry Mosses",
+			Name:  "Henry Mosses",
 			Phone: "07074578912",
 			Email: "hensses@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Joseph Praise",
+			Name:  "Joseph Praise",
 			Phone: "08045612378",
 			Email: "jpraise090@gmail.com",
 		},
 		schema.RaffleEntry{
-			Name: "Kayode Mohammed",
+			Name:  "Kayode Mohammed",
 			Phone: "08047856912",
 			Email: "kaymoh@gmail.com",
 		},
-	]
+	}
+
 	s, err := mgo.Dial("mongodb://heroku_drh8mw8f:8v8d10d1jhlo7crb7404psbtfg@ds161295.mlab.com:61295/heroku_drh8mw8f")
 	//s, err := mgo.Dial("mongodb://127.0.0.1")
 	if err != nil {
@@ -264,7 +265,7 @@ func draw(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if _, serr := SendSimpleMessage("Thank you for participating in the \"BAD COMMENTS THE MOVIe\" Promo. Congratulations! You have been selected as one of the random winners for today's draw. Your win grants you free access to attend  \"BAD COMMENTS THE MOVIE PREMIERE\" this Easter and a photoshoot with your favourite \"BAD COMMENTS MOVIE STARS\" like Jim Iyke, Ini Edo, Timaya, Daddy Freeze etc. Wait😊 it has not finished yet🕺🏾. You will also receive free roundtrip transportation from your location to the \"BAD COMMENTS THE MOVIE\" Premiere venue and a V.I.P red carpet treatment. Oh wait! This is not the end, You can continue to play on for as many times as you wish to be among the 10 lucky winners to win grand prizes of 1k USD each and all expense paid trip to Zanzibar with Jim Iyke and Ini Edo for 3days starting from Easter Sunday. It only gets better with \"BAD COMMENTS THE MOVIE\". P.S send the BAD COMMENTS MOVIE PROMO LINK https://badcommentsmoviepromo.com/ to your family and friends for them to win too. Yes oo! All we do is WIN! WIN! WIN!💪🏾🕺🏾",
-						 "Congratulations", ra.Email); serr != nil {
+							"Congratulations", ra.Email); serr != nil {
 							fmt.Println(serr.Error())
 						}
 					}
@@ -287,7 +288,7 @@ func draw(w http.ResponseWriter, r *http.Request) {
 							fmt.Println(werr.Error())
 						}
 					} else {
-					
+
 						//if _, werr := w.Write([]byte(con)); werr != nil {
 						//	fmt.Println(werr.Error())
 						//}
