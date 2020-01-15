@@ -107,7 +107,7 @@ func init() {
 		},
 		schema.RaffleEntry{
 			Name: "Zainab Ibrahim",
-			Phone: "08055534678"
+			Phone: "08055534678",
 			Email: "zinny@yahoo.com",
 		},
 		schema.RaffleEntry{
