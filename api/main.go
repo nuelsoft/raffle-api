@@ -28,7 +28,7 @@ var dummy []schema.RaffleEntry
 func SendSimpleMessage(msg string, sub string, to string) (string, error) {
 	mg := mailgun.NewMailgun(os.Getenv("MAILGUN_DOMAIN"), os.Getenv("MAILGUN_API_KEY"))
 	m := mg.NewMessage(
-		"RaffleIt <"+os.Getenv("MAILGUN_SMTP_LOGIN")+">",
+		"Bad Comments Movie Promo <"+os.Getenv("MAILGUN_SMTP_LOGIN")+">",
 		sub, msg,
 		to,
 	)
